@@ -403,12 +403,16 @@
         </el-form-item>
       </el-form>
     </el-dialog>
+<ExecSpec ref="execspec"></ExecSpec>
+<CameraSpec ref="camspec"></CameraSpec>
   </div>
 </template>
 
 <script>
   import {getFeatures,getFeature,deleteFeature,middleWarePushModel,middleWarePushConfig} from '../../../../api/console/feature.js'
   import ExecSpec from '../../../shared/exec-spec/exec-spec'
+  import DataSpec from '../../../shared/data_spec/data_spec'
+  import CameraSpec from '../../../shared/exec-spec-camera/exec-spec-camera'
   import DataTypeService  from '../../../../api/console/data_type_api'
     export default {
         name: "features",
@@ -483,6 +487,7 @@
         showIconModal(product_id,feature_id,dara_icon){
           this.feature_id = feature_id;
           /*！！！调取feature_icon子组件*/
+
         },
         data_init() {
           switch (Number(this.feature.type)) {
@@ -570,12 +575,12 @@
           this.feature_id = feature_id;
           let feaParams = {
             _url: "/api/products/" + this.product_id + "/features/" + feature_id,
-          }
+          };
           getFeature(feaParams).then(res =>{
             const f = res.data.data;
             switch (exec_type) {
               case 'serial':{
-                ExecSpec.openModal(f);
+                this.$refs.execspec.openModal(f)
                 break;
               }
               case 'lua': {
@@ -583,6 +588,7 @@
               }
               case 'camera1':
               case 'camera2': {
+                this.$refs.camspec.openModal(f);
                 // this.cameraSettings = f.exec_spec;
                 //this.devSettingCamera.openModal(f);
                 break;
@@ -617,7 +623,7 @@
             feature.spec = item.spec;
             feature.type = item.type;
           }
-         // this.dataspec.showModal(feature_type, modal_type, feature);
+          DataSpec.showModal(feature_type, modal_type, feature);
         },
         /*下发更新：修改配置，下发更新给中间件*/
         middleWarePush(){
@@ -660,6 +666,10 @@
             })
           })
         }
+      },
+      components:{
+        ExecSpec,
+        CameraSpec
       },
       created() {
         /*通过路由获取产品id*/
