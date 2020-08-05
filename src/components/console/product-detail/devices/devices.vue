@@ -182,7 +182,7 @@
         },
         getList(search= '') {
           let params = {
-            selectedValue: this.selectedValue,
+            product_id: this.selectedValue,
             currentPage: this.currentPage,
             pageSize: this.pageSize,
             search: search
@@ -211,8 +211,10 @@
           })
         },
         getStatistic(){
-          getStatistic(this.selectedValue).then(res =>{
-            //console.log(res)
+          let params ={
+            product_id: this.selectedValue,
+          };
+          getStatistic(params).then(res =>{
             this.total = res.data.data.total;
             this.online = res.data.data.online;
             this.activation = res.data.data.activation;
