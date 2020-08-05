@@ -20,3 +20,5 @@ export const deleteAll = params =>  { return axios({ url: params._url,method: pa
 
 /*删除单个产品*/
 export const deleted = params =>  { return axios({ url: params._url,method: params._method, data: params._body ,header: {  'current-party-id' : '7pr47w53y0w0' }}).then(res => res )};
+
+export const getEventAndService = params => { return axios.get(params._url,  {params:params._obj,headers: { 'current-party-id' : '7pr47w53y0w0'}})};
