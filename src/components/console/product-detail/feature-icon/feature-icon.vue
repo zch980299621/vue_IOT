@@ -61,7 +61,7 @@
       methods:{
         handleOk(){
           if(!this.icon.path){
-            this.message.create('', `请选择功能定义图标`);
+            this.$message( '请选择功能定义图标');
             return;
           }
           this.isVisible = false;
