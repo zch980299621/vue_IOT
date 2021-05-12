@@ -20,7 +20,7 @@
     "jquery": "^3.5.1",
     "mqtt": "^4.1.0",
     "popper.js": "^1.16.1",
-    "swiper": "^5.4.1",
+    "swiper": "^6.5.1",
     "vue-localstorage": "^0.6.2",
     "vue-pagination-2": "^2.0.3",
     "vue-router": "^3.0.1"
