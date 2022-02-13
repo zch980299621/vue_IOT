@@ -12,7 +12,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/vue-fontawesome": "^0.1.9",
-    "ajv": "^6.9.1",
+    "ajv": "^6.12.3",
     "bootstrap": "^4.5.0",
     "element-ui": "^2.13.2",
     "eventemitter2": "^6.4.2",
